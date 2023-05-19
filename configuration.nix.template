@@ -139,7 +139,7 @@
       pkgs.yarn
     ];
 
-    # Enable direnvx.
+    # Enable direnv
     programs.direnv.enable = true;
     programs.direnv.nix-direnv.enable = true;
 
