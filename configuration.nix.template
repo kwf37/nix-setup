@@ -139,10 +139,15 @@
       pkgs.yarn
     ];
 
-    # Enable direnv
+    # Enable direnvx.
     programs.direnv.enable = true;
     programs.direnv.nix-direnv.enable = true;
-    programs.bash.enable = true;
+
+    # Configure Bash
+    programs.bash = {
+        enable = true;
+        bashrcExtra = (builtins.readFile <<CONFIG_REPO_PATH>>/.bashrc);
+    };
 
     # Configure git
     programs.git = {
