@@ -146,7 +146,7 @@
     # Configure Bash
     programs.bash = {
         enable = true;
-        bashrcExtra = (builtins.readFile <<CONFIG_REPO_PATH>>/.bashrc);
+        bashrcExtra = (builtins.readFile <<CONFIG_REPO_PATH>>/generated/.bashrc);
     };
 
     # Configure git
