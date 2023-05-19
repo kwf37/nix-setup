@@ -44,6 +44,9 @@
   # Optimise Nix store
   nix.settings.auto-optimise-store = true;
 
+  # Auto upgrade packages once a day
+  system.autoUpgrade.enable = true;
+
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -123,6 +126,7 @@
       rustc
       cargo
       nix-du
+      zoom-us
     #  thunderbird
     ];
   };
@@ -132,6 +136,7 @@
     home.packages = [ 
       pkgs.vim 
       pkgs.git
+      pkgs.yarn
     ];
 
     # Enable direnv
