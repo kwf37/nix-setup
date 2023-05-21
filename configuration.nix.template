@@ -55,6 +55,7 @@
   services.xserver.windowManager.xmonad = {
     enable = true;
     enableContribAndExtras = true;
+    config = builtins.readFile <<CONFIG_REPO_PATH>>/xmonad/xmonad.hs;
   };
 
 
