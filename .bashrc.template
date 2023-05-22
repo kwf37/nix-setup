@@ -1,2 +1,3 @@
 alias config-rebuild="pushd . && cd <<CONFIG_REPO_PATH>> && ./build_config.sh && sudo cp generated/configuration.nix /etc/nixos/ && sudo nixos-rebuild switch && popd"
-export XMONAD_CONFIG_DIR=<<CONFIG_REPO_PATH>>
+XDG_CONFIG_HOME=<<CONFIG_REPO_PATH>>
+

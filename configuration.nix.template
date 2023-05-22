@@ -130,6 +130,10 @@
       pkgs.yarn
     ];
 
+    # Configure XDG config directory
+    xdg.enable = true;
+    xdg.configHome = <<CONFIG_REPO_PATH>>;
+
     # Enable direnv
     programs.direnv.enable = true;
     programs.direnv.nix-direnv.enable = true;
