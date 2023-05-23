@@ -118,6 +118,7 @@
       cargo
       nix-du
       zoom-us
+      rofi
     #  thunderbird
     ];
   };
@@ -144,12 +145,6 @@
         bashrcExtra = (builtins.readFile <<CONFIG_REPO_PATH>>/generated/.bashrc);
         initExtra = ". $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh";
     };
-
-    # Configure Rofi
-    programs.rofi = {
-        enable = true;
-    };
-
 
     # Configure git
     programs.git = {
