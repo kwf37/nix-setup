@@ -142,6 +142,7 @@
     programs.bash = {
         enable = true;
         bashrcExtra = (builtins.readFile <<CONFIG_REPO_PATH>>/generated/.bashrc);
+        initExtra = ". $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh";
     };
 
     # Configure Rofi
