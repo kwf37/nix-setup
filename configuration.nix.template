@@ -51,13 +51,6 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  # Enable the XMonad Window Manager
-  services.xserver.windowManager.xmonad = {
-    enable = true;
-    enableContribAndExtras = true;
-    config = builtins.readFile <<CONFIG_REPO_PATH>>/xmonad/xmonad.hs;
-  };
-
 
   # Configure keymap in X11
   services.xserver = {
@@ -94,6 +87,9 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
+  # Enable xmonad
+  services.xserver.windowManager.xmonad.enable = true;
+
   # Enable docker
   virtualisation.docker.enable = true;
 
@@ -118,6 +114,7 @@
       cargo
       nix-du
       zoom-us
+      rofi
     #  thunderbird
     ];
   };
@@ -130,6 +127,15 @@
       pkgs.yarn
     ];
 
+    # Configure XDG config directory
+    xdg.enable = true;
+    xdg.configFile = {
+      "rofi" = {
+        source = <<CONFIG_REPO_PATH>>/rofi/config.rasi;
+        target = "rofi/config.rasi";
+      };
+    };
+
     # Enable direnv
     programs.direnv.enable = true;
     programs.direnv.nix-direnv.enable = true;
@@ -138,19 +144,21 @@
     programs.bash = {
         enable = true;
         bashrcExtra = (builtins.readFile <<CONFIG_REPO_PATH>>/generated/.bashrc);
+        initExtra = ". $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh";
     };
-
-    # Configure Rofi
-    programs.rofi = {
-        enable = true;
-    };
-
 
     # Configure git
     programs.git = {
       enable = true;
       userName = "Kenneth Fang";
       userEmail = "fangkw42@gmail.com";
+    };
+
+    # Enable the XMonad Window Manager
+    xsession.windowManager.xmonad = {
+      enable = true;
+      enableContribAndExtras = true;
+      config = <<CONFIG_REPO_PATH>>/xmonad/xmonad.hs;
     };
   };
 
