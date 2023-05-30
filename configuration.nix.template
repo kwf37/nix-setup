@@ -115,6 +115,7 @@
       nix-du
       zoom-us
       rofi
+      polybar
     #  thunderbird
     ];
   };
