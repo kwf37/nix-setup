@@ -100,11 +100,14 @@
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
   };
 
+  # Enable light for brightness management
+  programs.light.enable = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.palladion = {
     isNormalUser = true;
     description = "Kenneth Fang";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "video" ];
     packages = with pkgs; [
       firefox
       vim
