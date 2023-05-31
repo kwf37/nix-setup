@@ -119,6 +119,7 @@
       zoom-us
       rofi
       polybar
+      conky
     #  thunderbird
     ];
   };
@@ -129,6 +130,7 @@
       pkgs.vim 
       pkgs.git
       pkgs.yarn
+      pkgs.conky
     ];
 
     # Configure XDG config directory
@@ -163,6 +165,10 @@
       enable = true;
       enableContribAndExtras = true;
       config = <<CONFIG_REPO_PATH>>/xmonad/xmonad.hs;
+    };
+
+    services.picom = {
+      enable = true;
     };
   };
 
