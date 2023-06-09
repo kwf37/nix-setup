@@ -140,6 +140,14 @@
         source = <<CONFIG_REPO_PATH>>/rofi/config.rasi;
         target = "rofi/config.rasi";
       };
+      "conky-brightness" = {
+        source = <<CONFIG_REPO_PATH>>/conky/brightness.conf;
+        target = "conky/brightness.conf";
+      };
+      "conky-brightness-lua" = {
+        source = <<CONFIG_REPO_PATH>>/conky/brightness.lua;
+        target = "conky/brightness.lua";
+      };
     };
 
     # Enable direnv
