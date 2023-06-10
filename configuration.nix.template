@@ -148,6 +148,10 @@
         source = <<CONFIG_REPO_PATH>>/conky/brightness.lua;
         target = "conky/brightness.lua";
       };
+      "scripts" = {
+        source = <<CONFIG_REPO_PATH>>/scripts/spawn_conky_brightness.sh;
+        target = "scripts/spawn_conky_brightness.sh";
+      };
     };
 
     # Enable direnv

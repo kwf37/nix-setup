@@ -29,7 +29,7 @@ main =
     }
   `additionalKeys`
     [ ((noModMask, xK_Super_L), spawn "rofi -show run")
-    , ((noModMask, xF86XK_MonBrightnessUp), spawn "light -A 5")
-    , ((noModMask, xF86XK_MonBrightnessDown), spawn "light -U 5")
+    , ((noModMask, xF86XK_MonBrightnessUp), spawn "light -A 5; ~/.config/scripts/spawn_conky_brightness.sh")
+    , ((noModMask, xF86XK_MonBrightnessDown), spawn "light -U 5; ~/.config/scripts/spawn_conky_brightness.sh")
     ]
 
