@@ -8,6 +8,8 @@ import XMonad.Util.EZConfig
 import XMonad.Util.Ungrab
 import XMonad.Util.Run
 
+import Graphics.X11.ExtraTypes.XF86
+
 myPolybar :: StatusBarConfig
 myPolybar = statusBarProp "polybar example" (pure xmobarPP)
 
@@ -22,5 +24,7 @@ main =
     }
   `additionalKeys`
     [ ((noModMask, xK_Super_L), spawn "rofi -show run")
+    , ((noModMask, xF86XK_MonBrightnessUp), spawn "light -A 5; ~/.config/scripts/spawn_conky_brightness.sh")
+    , ((noModMask, xF86XK_MonBrightnessDown), spawn "light -U 5; ~/.config/scripts/spawn_conky_brightness.sh")
     ]
 
