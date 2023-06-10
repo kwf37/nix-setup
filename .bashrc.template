@@ -1,2 +1,10 @@
 alias config-rebuild="pushd . && cd <<CONFIG_REPO_PATH>> && ./build_config.sh && sudo cp generated/configuration.nix /etc/nixos/ && sudo nixos-rebuild switch && popd"
 
+spawn_conky_brightness ()
+{
+	if [ $(pgrep -f "conky/brightness.conf" | wc -w) -eq 0 ]; then
+		conky -c ~/.config/conky/brightness.conf
+	fi
+}
+
+export -f spawn_conky_brightness
