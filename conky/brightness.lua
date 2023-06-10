@@ -11,7 +11,9 @@ function update_brightness ()
     prev_brightness = brightness
     brightness = conky_parse("${exec light -G}")
     if brightness == prev_brightness then
-        stale_counter = stale_counter + 1
+        if opacity > 0 then
+            stale_counter = stale_counter + 1
+        end
     else
         stale_counter = 0
         opacity = 1.0
@@ -65,13 +67,16 @@ function conky_main ()
     if conky_window == nil then
         return
     end
+    update_brightness ()
+    if opacity  <= 0 then
+	    os.exit()
+    end
     local cs = cairo_xlib_surface_create (conky_window.display,
                                          conky_window.drawable,
                                          conky_window.visual,
                                          conky_window.width,
                                          conky_window.height)
     cr = cairo_create (cs)
-    update_brightness ()
     draw (cr)
     local updates = tonumber (conky_parse ('${updates}'))
     if updates > 5 then
