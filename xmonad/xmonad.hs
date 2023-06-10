@@ -19,8 +19,8 @@ main =
     $ ewmhFullscreen
     $ ewmh
     $ withSB myPolybar
-    $ docks def { 
-          layoutHook = avoidStruts (Tall 1 (3/100) (1/2) ||| Full)
+    $ docks def {
+        layoutHook = avoidStruts (Tall 1 (3/100) (1/2) ||| Full)
     }
   `additionalKeys`
     [ ((noModMask, xK_Super_L), spawn "rofi -show run")
