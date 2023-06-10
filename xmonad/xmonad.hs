@@ -7,15 +7,11 @@ import XMonad.Layout
 import XMonad.Util.EZConfig
 import XMonad.Util.Ungrab
 import XMonad.Util.Run
-import XMonad.Util.SpawnOnce
 
 import Graphics.X11.ExtraTypes.XF86
 
 myPolybar :: StatusBarConfig
 myPolybar = statusBarProp "polybar example" (pure xmobarPP)
-
-myStartupHook = do
-    spawnOnce "conky -d -c ~/.config/conky/brightness.conf"
 
 main :: IO ()
 main =
@@ -24,7 +20,6 @@ main =
     $ ewmh
     $ withSB myPolybar
     $ docks def { 
-          startupHook = myStartupHook,
           layoutHook = avoidStruts (Tall 1 (3/100) (1/2) ||| Full)
     }
   `additionalKeys`
