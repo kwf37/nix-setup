@@ -51,7 +51,6 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-
   # Configure keymap in X11
   services.xserver = {
     layout = "us";
@@ -86,6 +85,13 @@
 
   # Enable touchpad support (enabled default in most desktopManager).
   services.xserver.libinput.enable = true;
+
+  # Enable geoclue2 location provider for use with redshift
+  services.geoclue2 = {
+      enable = true;
+      appConfig.redshift.isAllowed = true;
+      appConfig.redshift.isSystem = true;
+  };
 
   # Enable xmonad
   services.xserver.windowManager.xmonad.enable = true;
@@ -179,8 +185,19 @@
       config = <<CONFIG_REPO_PATH>>/xmonad/xmonad.hs;
     };
 
+    # Enable PiCom compositor
     services.picom = {
       enable = true;
+    };
+
+    # Enable redshift for color temperature adjustments
+    services.redshift = {
+        enable = true;
+        provider = "geoclue2";
+        temperature = {
+            day = 5500;
+            night = 2500;
+        };
     };
   };
 
