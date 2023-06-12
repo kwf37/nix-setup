@@ -100,6 +100,9 @@
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
   };
 
+  # Enable Network Manager Applet
+  programs.nm-applet.enable = true;
+
   # Enable light for brightness management
   programs.light.enable = true;
 
@@ -120,6 +123,7 @@
       rofi
       polybar
       conky
+      networkmanagerapplet
     #  thunderbird
     ];
   };
@@ -151,6 +155,10 @@
       "scripts" = {
         source = <<CONFIG_REPO_PATH>>/scripts/spawn_conky_brightness.sh;
         target = "scripts/spawn_conky_brightness.sh";
+      };
+      "polybar" = {
+        source = <<CONFIG_REPO_PATH>>/polybar/config.ini;
+        target = "polybar/config.ini";
       };
     };
 
