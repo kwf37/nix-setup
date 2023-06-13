@@ -4,6 +4,7 @@ import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.StatusBar
 import XMonad.Hooks.StatusBar.PP
 import XMonad.Layout
+import XMonad.Layout.NoBorders
 import XMonad.Util.EZConfig
 import XMonad.Util.Ungrab
 import XMonad.Util.Run
@@ -20,7 +21,7 @@ main =
     $ ewmh
     $ withSB myPolybar
     $ docks def {
-        layoutHook = avoidStruts (Tall 1 (3/100) (1/2) ||| Full)
+        layoutHook = avoidStruts $ smartBorders (Tall 1 (3/100) (1/2) ||| Full)
     }
   `additionalKeys`
     [ ((noModMask, xK_Super_L), spawn "rofi -show run")
