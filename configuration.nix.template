@@ -172,6 +172,11 @@
     programs.direnv.enable = true;
     programs.direnv.nix-direnv.enable = true;
 
+    # Enable Alacritty terminal emulator
+    programs.alacritty = {
+        enable = true;
+    };
+
     # Configure Bash
     programs.bash = {
         enable = true;
