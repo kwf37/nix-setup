@@ -141,6 +141,7 @@
       pkgs.git
       pkgs.yarn
       pkgs.conky
+      pkgs.copyq
     ];
 
     # Configure XDG config directory
