@@ -141,6 +141,7 @@
       pkgs.git
       pkgs.yarn
       pkgs.conky
+      pkgs.alacritty
     ];
 
     # Configure XDG config directory
@@ -166,16 +167,15 @@
         source = <<CONFIG_REPO_PATH>>/polybar/config.ini;
         target = "polybar/config.ini";
       };
+      "alacritty" = {
+        source = <<CONFIG_REPO_PATH>>/alacritty/alacritty.yml;
+        target = "alacritty/alacritty.yml";
+      };
     };
 
     # Enable direnv
     programs.direnv.enable = true;
     programs.direnv.nix-direnv.enable = true;
-
-    # Enable Alacritty terminal emulator
-    programs.alacritty = {
-        enable = true;
-    };
 
     # Configure Bash
     programs.bash = {
