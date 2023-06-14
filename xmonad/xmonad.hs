@@ -21,6 +21,7 @@ main =
     $ ewmh
     $ withSB myPolybar
     $ docks def {
+        terminal = "alacritty",
         layoutHook = avoidStruts $ smartBorders (Tall 1 (3/100) (1/2) ||| Full)
     }
   `additionalKeys`
