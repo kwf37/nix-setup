@@ -14,7 +14,9 @@
   };
   
   imports =
-    [ # Include the results of the hardware scan.
+    [ # Laptop drivers from nixos-hardware repo: https://github.com/NixOS/nixos-hardware
+      <nixos-hardware/lenovo/thinkpad/x1/6th-gen>
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
       # Include home-manager for user-level package management.
       <home-manager/nixos>
