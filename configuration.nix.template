@@ -217,7 +217,7 @@
     };
     # Set env var to run VSCode on Wayland per
     # https://nixos.wiki/wiki/Visual_Studio_Code#Wayland
-    programs.sessionVariables.NIXOS_OZONE_WL = "1";
+    home.sessionVariables.NIXOS_OZONE_WL = "1";
 
     # Enable the XMonad Window Manager
     xsession.windowManager.xmonad = {
