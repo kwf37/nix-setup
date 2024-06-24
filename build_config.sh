@@ -5,6 +5,7 @@
 echo Copying template files
 mkdir -p generated
 cp configuration.nix.template generated/configuration.nix
+cp flake.nix.template generated/flake.nix
 cp .bashrc.template generated/.bashrc
 
 # 2. Declare all variables to replace in template file
