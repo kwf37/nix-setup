@@ -1,0 +1,28 @@
+{
+  description = "flake for palladion";
+
+  inputs = {
+    nixpkgs = {
+      url = "github:NixOS/nixpkgs/nixos-24.05";
+    };
+    nixos-hardware = {
+      url = "github:NixOS/nixos-hardware/2f893e185c850bcd6dbf4fbc0c61b1b90d23ff79";
+    };
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+  };
+
+  outputs = { self, nixpkgs, nixos-hardware, ... }@attrs: {
+    nixosConfigurations = {
+      palladion = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = attrs;
+        modules = [
+          # Laptop drivers from nixos-hardware repo: https://github.com/NixOS/nixos-hardware
+          nixos-hardware.nixosModules.lenovo-thinkpad-x1-6th-gen
+          ./configuration.nix
+        ];
+      };
+    };
+  };
+}

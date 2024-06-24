@@ -14,8 +14,7 @@
   };
   
   imports =
-    [ # Laptop drivers from nixos-hardware repo: https://github.com/NixOS/nixos-hardware
-      <nixos-hardware/lenovo/thinkpad/x1/6th-gen>
+    [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
       # Include home-manager for user-level package management.
@@ -52,11 +51,13 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
-  services.xserver = {
+  services.xserver.xkb = {
     layout = "us";
-    xkbVariant = "";
+    variant = "";
   };
 
   # Configure keyboard
@@ -86,7 +87,7 @@
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
-  services.xserver.libinput.enable = true;
+  services.libinput.enable = true;
 
   # Enable geoclue2 location provider for use with redshift
   services.geoclue2 = {
@@ -96,7 +97,7 @@
   };
 
   # Enable xmonad
-  services.xserver.windowManager.xmonad.enable = true;
+  # services.xserver.windowManager.xmonad.enable = true;
 
   # Enable docker
   virtualisation.docker.enable = true;
@@ -138,13 +139,19 @@
 
   # Set up home manager for palladion
   home-manager.users.palladion = { pkgs, ... }: {
-    home.packages = [ 
-      pkgs.vim 
-      pkgs.git
-      pkgs.yarn
-      pkgs.conky
-      pkgs.alacritty
-    ];
+    home.stateVersion = "24.05";
+
+    nixpkgs.config.allowUnfree = true; 
+
+    home.packages = with pkgs;
+      [ 
+        pkgs.vim 
+        pkgs.git
+        pkgs.yarn
+        pkgs.conky
+        pkgs.alacritty
+        pkgs.inkscape
+      ];
 
     # Configure XDG config directory
     xdg.enable = true;
@@ -192,6 +199,25 @@
       userName = "Kenneth Fang";
       userEmail = "fangkw42@gmail.com";
     };
+
+    # Configure VSCode
+    programs.vscode = {
+      enable = true;
+      extensions = with pkgs.vscode-extensions; [
+        bbenoist.nix
+        vscodevim.vim
+        dbaeumer.vscode-eslint
+        esbenp.prettier-vscode
+        formulahendry.auto-rename-tag
+        yzhang.markdown-all-in-one
+        svelte.svelte-vscode
+        ocamllabs.ocaml-platform
+        ms-azuretools.vscode-docker
+      ];
+    };
+    # Set env var to run VSCode on Wayland per
+    # https://nixos.wiki/wiki/Visual_Studio_Code#Wayland
+    home.sessionVariables.NIXOS_OZONE_WL = "1";
 
     # Enable the XMonad Window Manager
     xsession.windowManager.xmonad = {
