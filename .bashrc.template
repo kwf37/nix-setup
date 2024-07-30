@@ -1,1 +1,4 @@
 alias config-rebuild="pushd . && cd <<CONFIG_REPO_PATH>> && ./build_config.sh && sudo cp generated/configuration.nix /etc/nixos/ && sudo cp generated/flake.nix /etc/nixos/ && sudo nixos-rebuild --flake /etc/nixos/#palladion switch --impure && popd"
+
+alias collect-garbage="pushd . && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot && popd"
+

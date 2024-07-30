@@ -148,6 +148,7 @@
         pkgs.vim 
         pkgs.git
         pkgs.yarn
+        pkgs.nodejs
         pkgs.conky
         pkgs.alacritty
         pkgs.inkscape
@@ -196,6 +197,9 @@
     # Configure git
     programs.git = {
       enable = true;
+      extraConfig = {
+        push = { autoSetupRemote = true; };
+      };
       userName = "Kenneth Fang";
       userEmail = "fangkw42@gmail.com";
     };
@@ -213,6 +217,7 @@
         svelte.svelte-vscode
         ocamllabs.ocaml-platform
         ms-azuretools.vscode-docker
+        astro-build.astro-vscode
       ];
     };
     # Set env var to run VSCode on Wayland per
